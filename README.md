@@ -41,7 +41,7 @@ Colaborativos/
 ├── Colaborativo1.0.py
 ├── README.md
 └── .venv/
-
+```
 
 O arquivo principal do projeto é:
 

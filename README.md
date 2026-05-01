@@ -78,7 +78,7 @@ source .venv/bin/activate
 Se o ambiente estiver ativo, o terminal mostrará algo parecido com:
 
 ```bash
-(.venv) rafael@rafael-ubuntu:~/Área de trabalho/Colaborativos$
+(.venv) user@user-ubuntu:~/Área de trabalho/Colaborativos$
 ```
 
 ---
@@ -93,23 +93,14 @@ pip install langgraph langchain langchain-ollama
 
 ## Instalação do Ollama no Ubuntu
 
-Neste projeto, o Ollama foi instalado manualmente dentro da pasta `/home`, para evitar ocupar espaço na partição raiz `/`.
 
-Essa abordagem é útil quando o root do sistema tem pouco espaço, como no exemplo:
-
-```bash
-/dev/nvme0n1p4   22G   17G  3,7G  83% /
-/dev/nvme0n1p3  210G   38G  162G  19% /home
-```
-
----
 
 ### 1. Baixar o Ollama manualmente
 
 Entre na pasta do usuário:
 
 ```bash
-cd /home/rafael
+cd /home/user
 ```
 
 Baixe o pacote do Ollama:
@@ -132,14 +123,14 @@ O arquivo deve ter aproximadamente `1,6G` e aparecer como arquivo gzip.
 ### 2. Extrair o Ollama no `/home`
 
 ```bash
-mkdir -p /home/rafael/ollama
-tar -C /home/rafael/ollama -xzf /home/rafael/ollama-linux-amd64.tgz
+mkdir -p /home/user/ollama
+tar -C /home/user/ollama -xzf /home/rafael/ollama-linux-amd64.tgz
 ```
 
 Teste se o binário foi instalado:
 
 ```bash
-/home/rafael/ollama/bin/ollama -v
+/home/user/ollama/bin/ollama -v
 ```
 
 É normal aparecer um aviso dizendo que não existe uma instância do Ollama rodando ainda:
@@ -158,14 +149,14 @@ Isso significa que o cliente foi instalado corretamente, mas o servidor ainda n�
 Crie a pasta onde os modelos serão armazenados:
 
 ```bash
-mkdir -p /home/rafael/ollama-models
+mkdir -p /home/user/ollama-models
 ```
 
 Adicione o Ollama ao PATH:
 
 ```bash
-echo 'export PATH="/home/rafael/ollama/bin:$PATH"' >> ~/.bashrc
-echo 'export OLLAMA_MODELS="/home/rafael/ollama-models"' >> ~/.bashrc
+echo 'export PATH="/home/user/ollama/bin:$PATH"' >> ~/.bashrc
+echo 'export OLLAMA_MODELS="/home/user/ollama-models"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -179,7 +170,7 @@ ollama -v
 O comando abaixo deve retornar algo parecido com:
 
 ```bash
-/home/rafael/ollama/bin/ollama
+/home/user/ollama/bin/ollama
 ```
 
 ---
@@ -199,7 +190,7 @@ Antes de baixar o modelo, inicie o servidor do Ollama em um terminal separado.
 ### Terminal 1: iniciar o servidor do Ollama
 
 ```bash
-OLLAMA_MODELS=/home/rafael/ollama-models ollama serve
+OLLAMA_MODELS=/home/user/ollama-models ollama serve
 ```
 
 Deixe esse terminal aberto.
@@ -212,13 +203,13 @@ Em outro terminal:
 
 ```bash
 source ~/.bashrc
-OLLAMA_MODELS=/home/rafael/ollama-models ollama pull qwen2.5:3b
+OLLAMA_MODELS=/home/user/ollama-models ollama pull qwen2.5:3b
 ```
 
 Depois, teste o modelo:
 
 ```bash
-OLLAMA_MODELS=/home/rafael/ollama-models ollama run qwen2.5:3b
+OLLAMA_MODELS=/home/user/ollama-models ollama run qwen2.5:3b
 ```
 
 Digite algo como:
@@ -487,7 +478,7 @@ which ollama
 Se ainda não funcionar, adicione novamente ao PATH:
 
 ```bash
-echo 'export PATH="/home/rafael/ollama/bin:$PATH"' >> ~/.bashrc
+echo 'export PATH="/home/user/ollama/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -500,7 +491,7 @@ Significa que o servidor do Ollama não está rodando.
 Inicie com:
 
 ```bash
-OLLAMA_MODELS=/home/rafael/ollama-models ollama serve
+OLLAMA_MODELS=/home/user/ollama-models ollama serve
 ```
 
 ---
@@ -510,7 +501,7 @@ OLLAMA_MODELS=/home/rafael/ollama-models ollama serve
 Se aparecer erro dizendo que o modelo `qwen2.5:3b` não existe localmente, rode:
 
 ```bash
-OLLAMA_MODELS=/home/rafael/ollama-models ollama pull qwen2.5:3b
+OLLAMA_MODELS=/home/user/ollama-models ollama pull qwen2.5:3b
 ```
 
 ---
